@@ -9,18 +9,25 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));
 });
 app.get('/build', function(req, res) {
+  cluster.Worker
   let url = `http://${req.query}:8081/build`;
-  http.get(url);
+  http.get(url, err => {
+    console.log(JSON.stringify(err));
+  });
   res.sendFile(path.join(__dirname, '/build.html'));
 });
 app.get('/test', function(req, res) {
   let url = `http://${req.query}:8081/test`;
-  http.get(url);
+  http.get(url, err => {
+    console.log(JSON.stringify(err));
+  });
   res.sendFile(path.join(__dirname, '/test.html'));
 });
 app.get('/analysis', function(req, res) {
   let url = `http://${req.query}:8081/analysys`;
-  http.get(url);
+  http.get(url, err => {
+    console.log(JSON.stringify(err));
+  });
   res.sendFile(path.join(__dirname, '/analysis.html'));
 });
 app.listen(8080);
