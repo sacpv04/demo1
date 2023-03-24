@@ -9,7 +9,6 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '/index.html'));
 });
 app.get('/build', function(req, res) {
-  cluster.Worker
   let url = `http://${req.query}:8081/build`;
   http.get(url, err => {
     console.log(JSON.stringify(err));
